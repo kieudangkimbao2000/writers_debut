@@ -16,13 +16,15 @@ create table Premission(
 	NPermiss nvarchar(100) not null
 );
 
+drop table Blog
 create table Blog(
 	Id nvarchar(10) primary key (Id),
 	KWord nvarchar(50) not null unique,
 	Title nvarchar(100) not null,
 	Content text,
 	Category nvarchar(200),
-	Release bit default 0
+	Release bit default 0,
+	Id_Acc nvarchar(10) not null foreign key (Id_Acc) references Account(Id)
 );
 
 create table Category(

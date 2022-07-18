@@ -60,5 +60,45 @@ begin
 	where Id=@Id
 end
 
+create proc spud_blog_insert(@Id nvarchar(10),
+	@KWord nvarchar(50),
+	@Title nvarchar(100),
+	@Content text,
+	@Category nvarchar(200),
+	@Release bit,
+	@Id_Acc nvarchar(10))
+as
+begin
+	insert into Blog values(@Id, @KWord, @Title, @Content, @Category, @Release, @Id_Acc);
+end
 
+create proc spud_blog_update(@Id nvarchar(10),
+	@KWord nvarchar(50),
+	@Title nvarchar(100),
+	@Content text,
+	@Category nvarchar(200),
+	@Release bit)
+as
+begin
+	update Blog set KWord=@KWord, Title=@Title, Content=@Content, Category=@Category, Release=@Release
+	where Id=@Id
+end
 
+create proc spud_category_insert(@Id nvarchar(10),
+	@KWord nvarchar(50),
+	@NCate nvarchar(50))
+as
+begin
+	insert into Category values(@Id,
+	@KWord,
+	@NCate)
+end
+
+create proc spud_category_update(@Id nvarchar(10),
+	@KWord nvarchar(50),
+	@NCate nvarchar(50))
+as
+begin
+	update Category set KWord=@KWord, NCate=@NCate
+	where Id=@Id
+end
